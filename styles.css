@@ -1,0 +1,78 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #000000;
+}
+
+#game-container {
+    display: flex;
+    background-color: #0e0e32;
+    padding: 20px;
+    border: 2px solid #000000;
+    border-radius: 10px;
+}
+
+#game-board {
+    width: 240px;
+    height: 480px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    gap: 1px;
+    border: 2px solid #000000;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20px;
+    width: 150px;
+}
+
+#info {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+#score, #timer {
+    margin-bottom: 10px;
+}
+
+#restart-button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#restart-button:hover {
+    background-color: #45a049;
+}
+
+.block {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.cyan { background-color: #09bebe; }
+.yellow { background-color: #c2c20a; }
+.purple { background-color: #800080; }
+.blue { background-color: #1010b5; }
+.orange { background-color: #c28003; }
+.green { background-color: #08b008; }
+.red { background-color: #bc0606; }
+
+.ghost {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
