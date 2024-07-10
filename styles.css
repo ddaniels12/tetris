@@ -5,14 +5,84 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #000000;
+    font-family: 'Press Start 2P', cursive;
 }
 
 #game-container {
     display: flex;
     background-color: #0e0e32;
     padding: 20px;
-    border: 2px solid #000000;
+    border: 2px solid #4CAF50;
     border-radius: 10px;
+    box-shadow: 0 0 20px #4CAF50;
+}
+
+#start-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #4CAF50;
+    margin-right: 10px; /* Añadido para mover el menú hacia la izquierda */
+}
+
+#start-menu h1 {
+    font-size: 48px;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px #4CAF50;
+}
+
+#start-button {
+    padding: 15px 20px;
+    font-size: 14px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    transition: all 0.3s ease;
+    text-align: center;
+    width: calc(100% - 20px); /* Ajustado para considerar el margen */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#restart-button {
+    padding: 10px 15px;
+    font-size: 12px; /* Reducido para que quepa "Reiniciar" */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#start-button:hover, #restart-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+#instructions {
+    margin-top: 40px;
+    text-align: center;
+}
+
+#instructions h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#instructions p {
+    font-size: 14px;
+    margin: 10px 0;
 }
 
 #game-board {
@@ -22,7 +92,7 @@ body {
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(20, 1fr);
     gap: 1px;
-    border: 2px solid #000000;
+    border: 2px solid #4CAF50;
     background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -37,42 +107,32 @@ body {
 #info {
     display: flex;
     flex-direction: column;
-    color: white;
-    font-size: 16px;
+    color: #4CAF50;
+    font-size: 14px;
     margin-bottom: 20px;
 }
 
 #score, #timer {
-    margin-bottom: 10px;
-}
-
-#restart-button {
-    padding: 10px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#restart-button:hover {
-    background-color: #45a049;
+    margin-bottom: 20px;
 }
 
 .block {
     border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-.cyan { background-color: #09bebe; }
-.yellow { background-color: #c2c20a; }
+.cyan { background-color: #00FFFF; }
+.yellow { background-color: #FFFF00; }
 .purple { background-color: #800080; }
-.blue { background-color: #1010b5; }
-.orange { background-color: #c28003; }
-.green { background-color: #08b008; }
-.red { background-color: #bc0606; }
+.blue { background-color: #0000FF; }
+.orange { background-color: #FFA500; }
+.green { background-color: #00FF00; }
+.red { background-color: #FF0000; }
 
 .ghost {
     background-color: rgba(255, 255, 255, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.hidden {
+    display: none;
 }

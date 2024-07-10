@@ -5,11 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tetris</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="game-container">
-        <div id="game-board"></div>
-        <div id="sidebar">
+        <div id="start-menu">
+            <h1>TETRIS</h1>
+            <button id="start-button">Iniciar Juego</button>
+            <div id="instructions">
+                <h2>Instrucciones:</h2>
+                <p>← → : Mover</p>
+                <p>↑ : Rotar</p>
+                <p>↓ : Bajar</p>
+                <p>Espacio : Caída rápida</p>
+            </div>
+        </div>
+        <div id="game-board" class="hidden"></div>
+        <div id="sidebar" class="hidden">
             <div id="info">
                 <div id="score">Puntuación: <span id="score-value">0</span></div>
                 <div id="timer">Tiempo: <span id="timer-value">0</span></div>
@@ -17,6 +29,15 @@
             <button id="restart-button">Reiniciar</button>
         </div>
     </div>
+    <audio id="background-music" loop>
+        <source src="assets/audio/background.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="drop-sound">
+        <source src="assets/audio/drop.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="clear-sound">
+        <source src="assets/audio/clear.mp3" type="audio/mpeg">
+    </audio>
     <script src="script.js"></script>
 </body>
 </html>

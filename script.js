@@ -9,6 +9,10 @@ let time = 0;
 let gameInterval;
 let timerInterval;
 let gameSpeed = 1000; // Velocidad inicial: 1 segundo
+const backgroundMusic = document.getElementById('background-music');
+const dropSound = document.getElementById('drop-sound');
+const clearSound = document.getElementById('clear-sound');
+
 
 const pieces = [
     { shape: [[1, 1, 1, 1]], color: 'cyan' },
@@ -181,6 +185,7 @@ function clearLines() {
         score += linesCleared * 100;
         updateScore();
         drawBoard();
+        playClearSound();
     }
 }
 
@@ -217,6 +222,25 @@ function eraseGhost() {
     }
 }
 
+function playBackgroundMusic() {
+    backgroundMusic.play();
+}
+
+function stopBackgroundMusic() {
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0;
+}
+
+function playDropSound() {
+    dropSound.currentTime = 0;
+    dropSound.play();
+}
+
+function playClearSound() {
+    clearSound.currentTime = 0;
+    clearSound.play();
+}
+
 function dropPiece() {
     while (canMoveTo(currentX, currentY + 1, currentPiece.shape)) {
         erasePiece();
@@ -228,6 +252,7 @@ function dropPiece() {
     clearLines();
     createPiece();
     drawGhost();
+    playDropSound();
     if (!canMoveTo(currentX, currentY, currentPiece.shape)) {
         endGame();
     }
@@ -266,16 +291,24 @@ function updateTimer() {
 }
 
 function startGame() {
+    document.getElementById('start-menu').style.display = 'none';
+    document.getElementById('game-board').classList.remove('hidden');
+    document.getElementById('sidebar').classList.remove('hidden');
     initGame();
     document.addEventListener('keydown', handleKeyPress);
     gameInterval = setInterval(moveDown, gameSpeed);
     timerInterval = setInterval(updateTimer, 1000);
+    playBackgroundMusic();
 }
 
 function endGame() {
     clearInterval(gameInterval);
     clearInterval(timerInterval);
+    stopBackgroundMusic();
     alert('Game Over! Tu puntuación: ' + score + '. Tiempo: ' + time + ' segundos');
+    document.getElementById('start-menu').style.display = 'flex';
+    document.getElementById('game-board').classList.add('hidden');
+    document.getElementById('sidebar').classList.add('hidden');
 }
 
 function initGame() {
@@ -293,13 +326,14 @@ function initGame() {
 }
 
 function restartGame() {
+    stopBackgroundMusic();
     clearInterval(gameInterval);
     clearInterval(timerInterval);
     initGame();
     gameInterval = setInterval(moveDown, gameSpeed);
     timerInterval = setInterval(updateTimer, 1000);
+    playBackgroundMusic();
 }
 
 document.getElementById('restart-button').addEventListener('click', restartGame);
-
-startGame();
+document.getElementById('start-button').addEventListener('click', startGame);
